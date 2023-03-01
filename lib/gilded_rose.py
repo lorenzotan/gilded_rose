@@ -5,26 +5,64 @@ class GildedRose(object):
     def __init__(self, items):
         self.items = items
 
+
     def update_quality(self):
         for item in self.items:
-            if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
-                if item.name != "Sulfuras, Hand of Ragnaros":
-                    item.decrement_quality()
+            if item.name == 'Aged Brie':
+                self.update_aged_brie(item)
+            elif item.name == 'Backstage passes to a TAFKAL80ETC concert':
+                self.update_backstage(item)
+            elif item.name == 'Conjured Mana Cake':
+                self.update_conjured(item)
+            elif item.name == 'Sulfuras, Hand of Ragnaros':
+                self.update_sulfuras(item)
             else:
-                item.increment_quality()
-                if item.name == "Backstage passes to a TAFKAL80ETC concert":
-                    if item.sell_in < 11:
-                        item.increment_quality()
-                    if item.sell_in < 6:
-                        item.increment_quality()
-            if item.name != "Sulfuras, Hand of Ragnaros":
-                item.decrement_sell_in()
-            if item.sell_in < 0:
-                if item.name != "Aged Brie":
-                    if item.name != "Backstage passes to a TAFKAL80ETC concert":
-                        if item.name != "Sulfuras, Hand of Ragnaros":
-                            item.decrement_quality()
-                    else:
-                        item.reset_quality()
-                else:
-                    item.increment_quality()
+                self.update_default(item)
+
+
+    def update_aged_brie(self, item):
+        item.increment_quality()
+
+        item.decrement_sell_in()
+
+        if item.sell_in < 0:
+            item.increment_quality()
+
+
+    def update_backstage(self, item):
+        item.increment_quality()
+
+        if item.sell_in < 11:
+            item.increment_quality()
+
+        if item.sell_in < 6:
+            item.increment_quality()
+
+        item.decrement_sell_in()
+
+        if item.sell_in < 0:
+            item.reset_quality()
+
+
+    def update_conjured(self, item):
+        item.decrement_quality()
+        item.decrement_quality()
+
+        item.decrement_sell_in()
+
+        if item.sell_in < 0:
+            item.decrement_quality()
+            item.decrement_quality()
+
+
+    def update_default(self, item):
+        item.decrement_quality()
+
+        item.decrement_sell_in()
+
+        if item.sell_in < 0:
+            item.decrement_quality()
+
+
+    def update_sulfuras(self, item):
+        pass
