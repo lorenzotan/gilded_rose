@@ -2,11 +2,11 @@
 
 class GildedRose(object):
 
-    def __init__(self, items):
+    def __init__(self, items) -> None:
         self.items = items
 
 
-    def update_quality(self):
+    def update_quality(self) -> None:
         for item in self.items:
             if item.name == 'Aged Brie':
                 self.update_aged_brie(item)
@@ -20,7 +20,7 @@ class GildedRose(object):
                 self.update_default(item)
 
 
-    def update_aged_brie(self, item):
+    def update_aged_brie(self, item) -> None:
         item.increment_quality()
 
         item.decrement_sell_in()
@@ -29,7 +29,7 @@ class GildedRose(object):
             item.increment_quality()
 
 
-    def update_backstage(self, item):
+    def update_backstage(self, item) -> None:
         item.increment_quality()
 
         if item.sell_in < 11:
@@ -44,7 +44,7 @@ class GildedRose(object):
             item.reset_quality()
 
 
-    def update_conjured(self, item):
+    def update_conjured(self, item) -> None:
         item.decrement_quality()
         item.decrement_quality()
 
@@ -55,7 +55,7 @@ class GildedRose(object):
             item.decrement_quality()
 
 
-    def update_default(self, item):
+    def update_default(self, item) -> None:
         item.decrement_quality()
 
         item.decrement_sell_in()
@@ -64,5 +64,5 @@ class GildedRose(object):
             item.decrement_quality()
 
 
-    def update_sulfuras(self, item):
+    def update_sulfuras(self, item) -> None:
         pass
