@@ -22,7 +22,7 @@ def test_item_sell_in(item, sell_in, expected_sell_in):
     [
         ("Aged Brie", 0, 1),
         ("Backstage passes to a TAFKAL80ETC concert", 20, 23),
-        # ("Conjured Mana Cake", 3, 1),   # quality drops twice as fast
+        ("Conjured Mana Cake", 3, 1),   # quality drops twice as fast
         ("Default", 1, 0),
         ("Sulfuras, Hand of Ragnaros", 79, 79)
     ]
