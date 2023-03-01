@@ -1,6 +1,5 @@
 import pytest
-
-from ..gilded_rose import Item, GildedRose
+from ..lib import GildedRose, ItemProxy
 
 
 @pytest.mark.parametrize("item, sell_in, expected_sell_in",
@@ -13,7 +12,7 @@ from ..gilded_rose import Item, GildedRose
     ]
 )
 def test_item_sell_in(item, sell_in, expected_sell_in):
-    items = [Item(item, sell_in=sell_in, quality=0)]
+    items = [ItemProxy(item, sell_in=sell_in, quality=0)]
     gilded_rose = GildedRose(items)
     gilded_rose.update_quality()
     assert items[0].sell_in == expected_sell_in
@@ -29,7 +28,7 @@ def test_item_sell_in(item, sell_in, expected_sell_in):
     ]
 )
 def test_item_quality(item, quality, expected_quality):
-    items = [Item(item, sell_in=1, quality=quality)]
+    items = [ItemProxy(item, sell_in=1, quality=quality)]
     gilded_rose = GildedRose(items)
     gilded_rose.update_quality()
     assert items[0].quality == expected_quality
@@ -47,7 +46,7 @@ def test_item_quality(item, quality, expected_quality):
     ]
 )
 def test_item_quality_over_time(item, sell_in, quality, expected_quality, days):
-    items = [Item(item, sell_in=sell_in, quality=quality)]
+    items = [ItemProxy(item, sell_in=sell_in, quality=quality)]
     gilded_rose = GildedRose(items)
     for day in (range(days)):
         gilded_rose.update_quality()
@@ -55,7 +54,7 @@ def test_item_quality_over_time(item, sell_in, quality, expected_quality, days):
     assert items[0].quality == expected_quality
 
 def test_foo():
-    items = [Item("foo", 0, 0)]
+    items = [ItemProxy("foo", 0, 0)]
     gilded_rose = GildedRose(items)
     gilded_rose.update_quality()
     assert items[0].name == 'foo'
