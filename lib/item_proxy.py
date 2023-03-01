@@ -7,7 +7,7 @@ the attributes so that we can manipulate them without
 touching the Item class itself.
 '''        
 class ItemProxy(Item):
-    def __init__(self, name, sell_in, quality):
+    def __init__(self, name: str, sell_in: int, quality: int):
         Item.__init__(self, name, sell_in, quality)
 
     def increment_quality(self):
