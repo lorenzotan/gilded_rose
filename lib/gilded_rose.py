@@ -1,3 +1,4 @@
+from .item_factory import ItemFactory
 # -*- coding: utf-8 -*-
 
 class GildedRose(object):
@@ -7,17 +8,10 @@ class GildedRose(object):
 
 
     def update_quality(self) -> None:
+        factory = ItemFactory()
         for item in self.items:
-            if item.name == 'Aged Brie':
-                self.update_aged_brie(item)
-            elif item.name == 'Backstage passes to a TAFKAL80ETC concert':
-                self.update_backstage(item)
-            elif item.name == 'Conjured Mana Cake':
-                self.update_conjured(item)
-            elif item.name == 'Sulfuras, Hand of Ragnaros':
-                self.update_sulfuras(item)
-            else:
-                self.update_default(item)
+            gr_item = factory.create_instance(item.name)
+            gr_item.update_item(item)
 
 
     def update_aged_brie(self, item) -> None:
