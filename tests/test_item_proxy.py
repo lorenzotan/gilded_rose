@@ -1,5 +1,5 @@
 import pytest
-from ..lib import ItemProxy
+from ..lib.items import ItemProxy
 
 def test_increment_quality():
     item = ItemProxy('Item', 5, 10)

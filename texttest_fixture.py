@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-
-from lib import GildedRose, ItemProxy
+from lib.gilded_rose import GildedRose
+from lib.items import ItemProxy
 
 if __name__ == "__main__":
     print ("OMGHAI!")
