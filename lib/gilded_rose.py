@@ -1,4 +1,4 @@
-from .item_factory import ItemFactory
+from lib.item_factory import ItemFactory
 # -*- coding: utf-8 -*-
 
 class GildedRose(object):
