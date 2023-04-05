@@ -1,6 +1,6 @@
 import pytest
-from ..lib import GildedRose
-from ..lib.items import ItemProxy
+from lib.items.item_proxy import ItemProxy
+from lib.gilded_rose import GildedRose
 
 
 @pytest.mark.parametrize("item, sell_in, expected_sell_in",
